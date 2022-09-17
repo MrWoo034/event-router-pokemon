@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "dfx": "0.11.1",
+  "canisters": {
+    "pokemon_box_backend": {
+      "type": "rust",
+      "package": "pokemon_box_backend",
+      "candid": "src/pokemon_box_backend/pokemon_box_backend.did"
+    },
+    "pokemon_box_frontend": {
+      "type": "assets",
+      "source": [
+        "src/pokemon_box_frontend/assets"
+      ],
+      "dependencies": [
+        "pokemon_box_backend"
+      ]
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "",
+      "args": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  }
+}

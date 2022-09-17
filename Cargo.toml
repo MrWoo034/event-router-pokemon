@@ -1,0 +1,4 @@
+[workspace]
+members = [
+    "src/pokemon_box_backend",
+]
