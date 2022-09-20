@@ -1,0 +1,1 @@
+(record { species = variant { Bulbasaur }; nickname =  opt { };})

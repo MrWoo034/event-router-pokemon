@@ -1,0 +1,13 @@
+import "../pokemon_box/pokemon_box.did";
+
+type PokemonEvent = record {
+    consumer_address: principal;
+    consume_at_timestamp: opt nat64;
+    payload: Pokemon;
+    source_timestamp: nat64;
+};
+
+service : {
+    "greet": (text) -> (text) query;
+    "register_event": (PokemonEvent) -> (text);
+}

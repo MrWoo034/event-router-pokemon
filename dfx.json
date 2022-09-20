@@ -2,19 +2,15 @@
   "version": 1,
   "dfx": "0.11.1",
   "canisters": {
-    "pokemon_box_backend": {
+    "pokemon_box": {
       "type": "rust",
-      "package": "pokemon_box_backend",
-      "candid": "src/pokemon_box_backend/pokemon_box_backend.did"
+      "package": "pokemon_box",
+      "candid": "crates/pokemon_box/pokemon_box.did"
     },
-    "pokemon_box_frontend": {
-      "type": "assets",
-      "source": [
-        "src/pokemon_box_frontend/assets"
-      ],
-      "dependencies": [
-        "pokemon_box_backend"
-      ]
+    "event_router": {
+      "type": "rust",
+      "package": "event_router",
+      "candid": "crates/event_router/event_router.did"
     }
   },
   "defaults": {

@@ -1,0 +1,42 @@
+type StoreRequest = record {
+     species: PokemonSpecies;
+     nickname: opt text;
+};
+
+type PokemonSpecies = variant {
+    Bulbasaur;
+    Ivysaur;
+    Venasaur;
+    Charmander;
+    Charmeleon;
+    Charizard;
+    Squirtle;
+    Wartortle;
+    Blastoise;
+    Caterpie;
+    Metapod;
+    Butterfree;
+    Weedle;
+    Kakuna;
+    Beedrill;
+    Pidgey;
+    Pidgeotto;
+    Pidgeot;
+    Rattata;
+    Raticate;
+};
+
+type Pokemon = record {
+    id: nat32;
+    pokedex_id: nat8;
+    species: PokemonSpecies;
+    evolvable: bool;
+    nickname: opt text;
+    level: nat8;
+};
+
+service : {
+    "greet": (text) -> (text) query;
+    "store_pokemon": (StoreRequest) -> (Pokemon);
+    "retrieve_pokemon": (nat) -> (opt Pokemon);
+};

@@ -1,5 +1,5 @@
 [package]
-name = "pokemon_box_backend"
+name = "pokemon_box"
 version = "0.1.0"
 edition = "2021"
 
@@ -12,3 +12,10 @@ crate-type = ["cdylib"]
 candid = "0.7.14"
 ic-cdk = "0.5.2"
 ic-cdk-macros = "0.5.2"
+serde = "1.0.144"
+
+##############
+# crates
+##############
+event-model = {path="../event_model"}
+pokemon-model = {path = "../pokemon-model"}
