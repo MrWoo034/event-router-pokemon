@@ -1,26 +1,12 @@
-# pokemon_box
+# Event Router - Pokemon Box
 
-Welcome to your new pokemon_box project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+This project consists of two canisters, `event-router` and `pokemon-box`.  
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+The `pokemon_box` takes a `Pokemon` and stores it in its `State`.  It also registers the `Pokemon` as an `Event<Pokemon>`
+with the `event-router`.  
 
-To learn more before you start working with pokemon_box, see the following documentation available online:
-
-- [Quick Start](https://smartcontracts.org/docs/quickstart/quickstart-intro.html)
-- [SDK Developer Tools](https://smartcontracts.org/docs/developers-guide/sdk-guide.html)
-- [Rust Canister Devlopment Guide](https://smartcontracts.org/docs/rust-guide/rust-intro.html)
-- [ic-cdk](https://docs.rs/ic-cdk)
-- [ic-cdk-macros](https://docs.rs/ic-cdk-macros)
-- [Candid Introduction](https://smartcontracts.org/docs/candid-guide/candid-intro.html)
-- [JavaScript API Reference](https://erxue-5aaaa-aaaab-qaagq-cai.raw.ic0.app)
-
-If you want to start working on your project right away, you might want to try the following commands:
-
-```bash
-cd pokemon_box/
-dfx help
-dfx canister --help
-```
+By default, `Pokemon` will level up every one minute.  The `event-router` will check for new events that need to resolve
+using its `#[heartbeat]` function.  Those events will be passed back to the `pokemon_box` canisters `level_up` endpoint.
 
 ## Running the project locally
 
@@ -28,10 +14,18 @@ If you want to test your project locally, you can use the following commands:
 
 ```bash
 # Starts the replica, running in the background
-dfx start --background
+dfx start --clean --background
 
-# Deploys your canisters to the replica and generates your candid interface
-dfx deploy
+# Deploys the pokemon_box and event_router canisters.
+./scripts deploy_canisters.sh 
+
+# Stores a new Bulbasaur in the pokemon_box.
+# You can use the returned ID from this function with
+# ./sctipts retrieve_pokemon.sh ${ID}
+./scripts store_pokemon.sh
 ```
 
-Once the job completes, your application will be available at `http://localhost:8000?canisterId={asset_canister_id}`.
+## Troubleshooting
+
+The `event-router` canister id is currently a hardcoded constant address.  You may have to update this address to match 
+the address assigned when the `event-router` built on your local environment.
